@@ -30,3 +30,12 @@ Funcionalidade: Aprovar edição antes do envio
     Quando "Sandro" reprova a edição com o comentário "Corrigir o título"
     Então a edição deve estar "rascunho"
     E o autor deve ver o comentário "Corrigir o título"
+
+  @excecao
+  Cenário: Edição sem aprovação não chega aos assinantes
+    Dado que existe o segmento "Clientes Premium" com os assinantes:
+      | ana@email.com |
+      | bruno@email.com |
+    Quando envio a edição para o segmento
+    Então devo ver a mensagem "A edição precisa ser aprovada antes de enviar"
+    E nenhum e-mail deve ter sido enviado

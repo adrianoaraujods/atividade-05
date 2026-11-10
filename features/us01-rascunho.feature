@@ -8,6 +8,12 @@ Funcionalidade: Salvar rascunho automaticamente
     Dado que existe a edição "Informativo #42" escrita por "Adriano"
 
   @feliz
+  Cenário: Toda edição nasce como rascunho
+    Dado que a redatora digitou "Primeiro parágrafo" na edição
+    Quando eu espero 30 segundos sem digitar
+    Então a edição deve estar "rascunho"
+
+  @feliz
   Cenário: Rascunho salvo após 30 segundos sem digitar
     Dado que a redatora digitou "Primeiro parágrafo" na edição
     Quando eu espero 30 segundos sem digitar

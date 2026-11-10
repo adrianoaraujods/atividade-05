@@ -8,6 +8,7 @@
 
 **Critérios de aceitação**
 
+- Toda edição nasce como rascunho.
 - O rascunho é salvo após 30 segundos sem digitar.
 - Cada salvamento cria uma versão numerada.
 - Apenas as últimas 20 versões são mantidas.
@@ -29,6 +30,7 @@
 - O autor não pode aprovar a própria edição.
 - A reprovação exige um comentário.
 - Reprovada, a edição volta a rascunho com o comentário visível ao autor.
+- Sem aprovação, a edição não chega aos assinantes.
 
 **Regras cobertas:** RN02
 **Prioridade:** Alta — um erro enviado a 40 mil pessoas não tem volta.
@@ -37,15 +39,16 @@
 ## US03 — Agendar envio de newsletter
 
 **Como** gestora de comunicação
-**Quero** agendar o envio de uma edição aprovada para um segmento
-**Para** que ela chegue no melhor horário sem eu precisar apertar o botão
+**Quero** agendar o envio de uma edição aprovada para os segmentos escolhidos
+**Para** que cada público receba só o que interessa, no melhor horário
 
 **Critérios de aceitação**
 
 - Só edições aprovadas podem ser agendadas.
 - O envio exige ao menos 15 minutos de antecedência.
-- Segmento sem assinantes bloqueia o agendamento.
 - Reagendar é permitido até 2 vezes; cancelar, até 5 minutos antes do horário.
+- Segmento sem assinantes bloqueia o agendamento.
+- Uma edição vai para no máximo 5 segmentos; assinante em dois segmentos recebe um único e-mail.
 
 **Regras cobertas:** RN02, RN03, RN04
 **Prioridade:** Média — o produto funciona sem agendar, mas é o principal ganho de tempo da gestão.
@@ -61,6 +64,7 @@
 
 - O descadastro tem efeito imediato.
 - O assinante recebe um e-mail confirmando a saída.
+- Todo e-mail enviado traz o link de descadastro.
 - Para voltar à lista é preciso confirmar o e-mail (duplo opt-in).
 - O link de confirmação é válido por 48 horas.
 

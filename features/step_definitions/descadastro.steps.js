@@ -28,23 +28,24 @@ When('ele pede para voltar à lista', function () {
   this.resultado = this.servico.solicitarRetorno(this.email)
 })
 
-When('ele confirma o link {int} horas depois', function (horas) {
+When('ele confirma o link {int} hora(s) depois', function (horas) {
   this.avancarHoras(horas)
   this.resultado = this.servico.confirmarRetorno(this.email)
 })
 
-Then('ele não deve mais estar na lista', function () {
-  assert.equal(this.servico.lista.has(this.email), false)
-})
-
-Then('ele deve estar na lista', function () {
-  assert.equal(this.servico.lista.has(this.email), true)
+Then('a assinatura deve estar {word}', function (situacao) {
+  const assinatura = this.servico.assinaturas.get(this.email)
+  assert.ok(assinatura, `sem assinatura para ${this.email}`)
+  assert.equal(assinatura.ativa, situacao === 'ativa')
 })
 
 Then('ele deve receber um e-mail de confirmação do descadastro', function () {
-  assert.ok(this.servico.emailsEnviados.some((e) => e.para === this.email && e.assunto === 'Descadastro confirmado'))
+  const confirmacoes = this.servico.emailsEnviados.filter((e) => e.tipo === 'confirmacao-descadastro' && e.para === this.email)
+  assert.equal(confirmacoes.length, 1)
+  assert.equal(confirmacoes[0].assunto, 'Descadastro confirmado')
 })
 
 Then('nenhum e-mail de confirmação deve ser enviado', function () {
-  assert.equal(this.servico.emailsEnviados.length, 0)
+  const confirmacoes = this.servico.emailsEnviados.filter((e) => e.tipo === 'confirmacao-descadastro')
+  assert.equal(confirmacoes.length, 0)
 })

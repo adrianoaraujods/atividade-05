@@ -1,12 +1,16 @@
 const { setWorldConstructor } = require('@cucumber/cucumber')
 const { Servico, MIN, HORA } = require('./dominio')
 
+// A suíte não pode depender do fuso da máquina: o domínio fixa America/Sao_Paulo (RN03).
+process.env.TZ = 'UTC'
+
 // Recriado a cada cenário: nenhum estado vaza de um cenário para outro.
 class MundoDoNewsFlow {
   constructor() {
     this.servico = new Servico()
     this.edicao = null
-    this.segmento = null
+    this.segmentos = []
+    this.email = null
     this.resultado = null
   }
 
